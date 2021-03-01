@@ -6,9 +6,11 @@ using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 using Microsoft.Extensions.Logging;
+using NLog;
 using PeopleManagement.Repositories;
 using System;
 using System.Collections.Generic;
+using System.IO;
 using System.Linq;
 using System.Threading.Tasks;
 
@@ -18,6 +20,8 @@ namespace PeopleManagement
     {
         public Startup(IConfiguration configuration)
         {
+            LogManager.LoadConfiguration(String.Concat(Directory.GetCurrentDirectory(), "/nlog.config"));
+            
             Configuration = configuration;
         }
 
@@ -36,7 +40,9 @@ namespace PeopleManagement
             });
             services.AddScoped<IPeopleRepository, PeopleRepository>(); // This means: Whenever is needed. Create an instances of it.
             services.AddDbContext<DBContext>();
+            services.AddSingleton<ILoggerManager, Logger>(); // Logger
             services.AddControllers().AddNewtonsoftJson();
+            
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.

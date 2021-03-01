@@ -1,0 +1,8 @@
+C:\Users\Jas\Documents\_visualStudio_projects\PeopleManagement\DataAccess\bin\Debug\netcoreapp3.1\DataAccess.deps.json
+C:\Users\Jas\Documents\_visualStudio_projects\PeopleManagement\DataAccess\bin\Debug\netcoreapp3.1\DataAccess.dll
+C:\Users\Jas\Documents\_visualStudio_projects\PeopleManagement\DataAccess\bin\Debug\netcoreapp3.1\DataAccess.pdb
+C:\Users\Jas\Documents\_visualStudio_projects\PeopleManagement\DataAccess\obj\Debug\netcoreapp3.1\DataAccess.AssemblyInfoInputs.cache
+C:\Users\Jas\Documents\_visualStudio_projects\PeopleManagement\DataAccess\obj\Debug\netcoreapp3.1\DataAccess.AssemblyInfo.cs
+C:\Users\Jas\Documents\_visualStudio_projects\PeopleManagement\DataAccess\obj\Debug\netcoreapp3.1\DataAccess.csproj.CoreCompileInputs.cache
+C:\Users\Jas\Documents\_visualStudio_projects\PeopleManagement\DataAccess\obj\Debug\netcoreapp3.1\DataAccess.dll
+C:\Users\Jas\Documents\_visualStudio_projects\PeopleManagement\DataAccess\obj\Debug\netcoreapp3.1\DataAccess.pdb

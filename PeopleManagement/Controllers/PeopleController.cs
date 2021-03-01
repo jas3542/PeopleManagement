@@ -15,9 +15,9 @@ namespace PeopleManagement.Controllers
     public class PeopleController : Controller
     {        
         private IPeopleRepository _peopleRepository;
-        private ILogger _logger;
+        private ILoggerManager _logger;
 
-        public PeopleController(IPeopleRepository peopleRepository, ILogger<PeopleController> logger)
+        public PeopleController(IPeopleRepository peopleRepository, ILoggerManager logger)
         {
             _peopleRepository = peopleRepository;
             _logger = logger;
@@ -90,7 +90,7 @@ namespace PeopleManagement.Controllers
                 return Ok("Request executed successfully. Total changes made: "+result);
             }catch(Exception ex)
             {
-                _logger.LogError(ex.StackTrace,"Exceptions has been throwen while trying to insert a new person");
+                _logger.LogError(ex.StackTrace + "Exceptions has been throwen while trying to insert a new person");
                 return BadRequest("Request failed");
             }
 
@@ -123,7 +123,7 @@ namespace PeopleManagement.Controllers
                     return Ok(totalRowsChanged);
                 }catch(Exception ex)
                 {
-                    _logger.LogError(ex.StackTrace, "Exceptions has been throwen while trying to insert a new person");
+                    _logger.LogError(ex.StackTrace + "Exceptions has been throwen while trying to insert a new person");
                     return BadRequest();
                 }
             }
