@@ -1,4 +1,5 @@
-﻿using Microsoft.AspNetCore.Mvc;
+﻿using Microsoft.AspNetCore.Http;
+using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Logging;
 using PeopleManagement.DataModel;
 using PeopleManagement.Repositories;
@@ -21,7 +22,6 @@ namespace PeopleManagement.Controllers
         {
             _peopleRepository = peopleRepository;
             _logger = logger;
-            // TODO use the logger;
         }
 
         /// <summary>
@@ -33,17 +33,23 @@ namespace PeopleManagement.Controllers
         /// <param name="page_parameter"></param>
         /// <returns></returns>
         [HttpGet]
-        public async Task<List<PersonDataModel>> Get([FromQuery]PageParameter page_parameter)
+        public async Task<ActionResult<List<PersonDataModel>>> Get([FromQuery]PageParameter page_parameter)
         {
-            var people = await _peopleRepository.GetPeople(page_parameter);
-            var newPeopleList =  people.Select(p =>
+            if (await _peopleRepository.checkDBConnection()) { 
+                var people = await _peopleRepository.GetPeople(page_parameter);
+                var newPeopleList =  people.Select(p =>
+                {
+                    var surname = Encoding.Unicode.GetString(p.Surname);
+
+                    return new PersonDataModel(p.ID, p.Name, surname, p.Gender, p.Email, p.PhoneNumber, p.DateOfBirth);
+                }).ToList();
+                return newPeopleList;
+            }
+            else
             {
-                var surname = Encoding.Unicode.GetString(p.Surname);
-
-                return new PersonDataModel(p.ID, p.Name, surname, p.Gender, p.Email, p.PhoneNumber, p.DateOfBirth);
-            }).ToList();
-
-            return newPeopleList; 
+                return StatusCode(StatusCodes.Status500InternalServerError,"DB is unavailable");
+            }
+            
         }
 
         /// <summary>
@@ -58,15 +64,24 @@ namespace PeopleManagement.Controllers
         [Route("{personId}")]  
         public async Task<ActionResult<PersonDataModel>> GetPerson(long personId)
         {
-            var p_found = await _peopleRepository.GetPersonById(personId);
-            if (p_found != null) { 
-                var surname = Encoding.Unicode.GetString(p_found.Surname);
-                PersonDataModel p = new PersonDataModel(p_found.ID, p_found.Name, surname, p_found.Gender, p_found.Email, p_found.PhoneNumber, p_found.DateOfBirth);
-                
-                return Ok(p);
-            }else
+            if (await _peopleRepository.checkDBConnection())
             {
-                return NotFound();
+                var p_found = await _peopleRepository.GetPersonById(personId);
+                if (p_found != null)
+                {
+                    var surname = Encoding.Unicode.GetString(p_found.Surname);
+                    PersonDataModel p = new PersonDataModel(p_found.ID, p_found.Name, surname, p_found.Gender, p_found.Email, p_found.PhoneNumber, p_found.DateOfBirth);
+
+                    return Ok(p);
+                }
+                else
+                {
+                    return NotFound();
+                }
+            }
+            else
+            {
+                return StatusCode(StatusCodes.Status500InternalServerError, "DB is unavailable");
             }
         }
 
@@ -82,16 +97,23 @@ namespace PeopleManagement.Controllers
         [Route("insert")]    
         public async Task<ActionResult> AddPerson([FromBody] PersonDataModel person)
         {
-            try { 
-                byte[] surnameEncoded = Encoding.Unicode.GetBytes(person.Surname);
-                Person personToSave = new Person( person.Name, surnameEncoded, person.Gender, person.Email, person.PhoneNumber, person.DateOfBirth);
-                var result =  await _peopleRepository.AddPerson(personToSave);
-
-                return Ok("Request executed successfully. Total changes made: "+result);
-            }catch(Exception ex)
+            if (await _peopleRepository.checkDBConnection())
             {
-                _logger.LogError(ex.StackTrace + "Exceptions has been throwen while trying to insert a new person");
-                return BadRequest("Request failed");
+                try { 
+                    byte[] surnameEncoded = Encoding.Unicode.GetBytes(person.Surname);
+                    Person personToSave = new Person( person.Name, surnameEncoded, person.Gender, person.Email, person.PhoneNumber, person.DateOfBirth);
+                    var result =  await _peopleRepository.AddPerson(personToSave);
+
+                    return Ok("Request executed successfully. Total changes made: "+result);
+                }catch(Exception ex)
+                {
+                    _logger.LogError(ex.StackTrace + "Exceptions has been throwen while trying to insert a new person");
+                    return BadRequest("Request failed");
+                }
+            }
+            else
+            {
+                return StatusCode(StatusCodes.Status500InternalServerError, "DB is unavailable");
             }
 
         }
@@ -109,23 +131,33 @@ namespace PeopleManagement.Controllers
         [Route("update/{personId}")]  
         public async Task<ActionResult<int>> UpdatePerson(long personId,[FromBody] PersonDataModel person)
         {
-            var p_found = await _peopleRepository.GetPersonById(personId);
-            if (p_found == null)
+            if (await _peopleRepository.checkDBConnection())
             {
-                return NotFound();
-            }else
-            {
-                try { 
-                    byte[] surnameEncoded = Encoding.Unicode.GetBytes(person.Surname);
-                    Person personToUpdate = new Person(person.Name, surnameEncoded, person.Gender, person.Email, person.PhoneNumber, person.DateOfBirth);
-                    var totalRowsChanged = await _peopleRepository.UpdatePerson(personId, personToUpdate);
-
-                    return Ok(totalRowsChanged);
-                }catch(Exception ex)
+                var p_found = await _peopleRepository.GetPersonById(personId);
+                if (p_found == null)
                 {
-                    _logger.LogError(ex.StackTrace + "Exceptions has been throwen while trying to insert a new person");
-                    return BadRequest();
+                    return NotFound();
                 }
+                else
+                {
+                    try
+                    {
+                        byte[] surnameEncoded = Encoding.Unicode.GetBytes(person.Surname);
+                        Person personToUpdate = new Person(person.Name, surnameEncoded, person.Gender, person.Email, person.PhoneNumber, person.DateOfBirth);
+                        var totalRowsChanged = await _peopleRepository.UpdatePerson(personId, personToUpdate);
+
+                        return Ok(totalRowsChanged);
+                    }
+                    catch (Exception ex)
+                    {
+                        _logger.LogError(ex.StackTrace + "Exceptions has been throwen while trying to insert a new person");
+                        return BadRequest();
+                    }
+                }
+            }
+            else
+            {
+                return StatusCode(StatusCodes.Status500InternalServerError, "DB is unavailable");
             }
         }
 
@@ -141,15 +173,22 @@ namespace PeopleManagement.Controllers
         [Route("delete/{personId}")] 
         public async Task<ActionResult> DeletePerson(long personId)
         {
-            var p_found = await _peopleRepository.GetPersonById(personId);
-            if (p_found == null)
+            if (await _peopleRepository.checkDBConnection())
             {
-                return NotFound();
+                var p_found = await _peopleRepository.GetPersonById(personId);
+                if (p_found == null)
+                {
+                    return NotFound();
+                }
+                else
+                {
+                    var totalRowsChanged = await _peopleRepository.DeletePerson(new Person() { ID = personId });
+                    return Ok(totalRowsChanged);
+                }
             }
             else
             {
-                var totalRowsChanged = await _peopleRepository.DeletePerson(new Person() { ID = personId });
-                return Ok(totalRowsChanged);
+                return StatusCode(StatusCodes.Status500InternalServerError, "DB is unavailable");
             }
         }
 

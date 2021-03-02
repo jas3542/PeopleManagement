@@ -7,12 +7,10 @@ namespace PeopleManagement
 {
     public class PageParameter
     {
-        public int PageSize { get; set; } 
-        public int CurrentPage { get; set; }
+        public int PageSize { get; set; } = 10;
+        public int CurrentPage { get; set; } = 1;
         public PageParameter()
         {
-            PageSize = 10;
-            CurrentPage = 1;
         }
     }
 

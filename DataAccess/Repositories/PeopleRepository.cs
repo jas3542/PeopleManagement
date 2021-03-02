@@ -3,7 +3,7 @@ using System.Threading.Tasks;
 
 namespace PeopleManagement.Repositories
 {
-    public class PeopleRepository : IPeopleRepository
+    public sealed class PeopleRepository : IPeopleRepository
     {
         private DBContext _dbContext;
 
@@ -45,7 +45,11 @@ namespace PeopleManagement.Repositories
 
             return await _dbContext.SaveChangesAsync();
         }
-        
+
+        public Task<bool> checkDBConnection()
+        {
+            return _dbContext.Database.CanConnectAsync();
+        }
 
     }
 }

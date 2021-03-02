@@ -1,11 +1,12 @@
-﻿using System;
+﻿using DataAccess.Repositories;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 
 namespace PeopleManagement.Repositories
 {
-    public interface IPeopleRepository
+    public interface IPeopleRepository: IRepository
     {
         Task<PageList<Person>> GetPeople(PageParameter pageParameter);
         Task<Person> GetPersonById(long personId);
