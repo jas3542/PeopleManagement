@@ -34,6 +34,7 @@ C:\Users\Jas\Documents\_visualStudio_projects\PeopleManagement\PeopleManagement\
 C:\Users\Jas\Documents\_visualStudio_projects\PeopleManagement\PeopleManagement\bin\Debug\netcoreapp3.1\Newtonsoft.Json.Bson.dll
 C:\Users\Jas\Documents\_visualStudio_projects\PeopleManagement\PeopleManagement\bin\Debug\netcoreapp3.1\NLog.dll
 C:\Users\Jas\Documents\_visualStudio_projects\PeopleManagement\PeopleManagement\bin\Debug\netcoreapp3.1\NLog.Extensions.Logging.dll
+C:\Users\Jas\Documents\_visualStudio_projects\PeopleManagement\PeopleManagement\bin\Debug\netcoreapp3.1\NLog.Web.AspNetCore.dll
 C:\Users\Jas\Documents\_visualStudio_projects\PeopleManagement\PeopleManagement\bin\Debug\netcoreapp3.1\System.Collections.Immutable.dll
 C:\Users\Jas\Documents\_visualStudio_projects\PeopleManagement\PeopleManagement\bin\Debug\netcoreapp3.1\System.ComponentModel.Annotations.dll
 C:\Users\Jas\Documents\_visualStudio_projects\PeopleManagement\PeopleManagement\bin\Debug\netcoreapp3.1\System.Configuration.ConfigurationManager.dll

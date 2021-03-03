@@ -124,9 +124,13 @@
               "target": "Package",
               "version": "[5.0.3, )"
             },
-            "NLog.Extensions.Logging": {
+            "NLog": {
               "target": "Package",
-              "version": "[1.7.1, )"
+              "version": "[4.7.8, )"
+            },
+            "NLog.Web.AspNetCore": {
+              "target": "Package",
+              "version": "[4.11.0, )"
             }
           },
           "imports": [

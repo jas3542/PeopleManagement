@@ -16,9 +16,9 @@ namespace PeopleManagement.Controllers
     public class PeopleController : Controller
     {        
         private IPeopleRepository _peopleRepository;
-        private ILoggerManager _logger;
+        private ILogger<PeopleController> _logger;
 
-        public PeopleController(IPeopleRepository peopleRepository, ILoggerManager logger)
+        public PeopleController(IPeopleRepository peopleRepository, ILogger<PeopleController> logger)
         {
             _peopleRepository = peopleRepository;
             _logger = logger;
@@ -81,6 +81,7 @@ namespace PeopleManagement.Controllers
             }
             else
             {
+                _logger.LogError("DB is not available");
                 return StatusCode(StatusCodes.Status500InternalServerError, "DB is unavailable");
             }
         }
@@ -107,12 +108,13 @@ namespace PeopleManagement.Controllers
                     return Ok("Request executed successfully. Total changes made: "+result);
                 }catch(Exception ex)
                 {
-                    _logger.LogError(ex.StackTrace + "Exceptions has been throwen while trying to insert a new person");
+                    _logger.LogError(ex , "Exception has been thrown while trying to insert a new person");
                     return BadRequest("Request failed");
                 }
             }
             else
             {
+                _logger.LogError("DB is not available");
                 return StatusCode(StatusCodes.Status500InternalServerError, "DB is unavailable");
             }
 
@@ -150,13 +152,14 @@ namespace PeopleManagement.Controllers
                     }
                     catch (Exception ex)
                     {
-                        _logger.LogError(ex.StackTrace + "Exceptions has been throwen while trying to insert a new person");
+                        _logger.LogError(ex , "Exception has been thrown while trying to update a new person");
                         return BadRequest();
                     }
                 }
             }
             else
             {
+                _logger.LogError("DB is not available");
                 return StatusCode(StatusCodes.Status500InternalServerError, "DB is unavailable");
             }
         }
@@ -188,6 +191,7 @@ namespace PeopleManagement.Controllers
             }
             else
             {
+                _logger.LogError("DB is not available");
                 return StatusCode(StatusCodes.Status500InternalServerError, "DB is unavailable");
             }
         }

@@ -40,7 +40,7 @@ namespace PeopleManagement
             });
             services.AddScoped<IPeopleRepository, PeopleRepository>(); // This means: Whenever is needed. Create an instances of it.
             services.AddDbContext<DBContext>();
-            services.AddSingleton<ILoggerManager, Logger>(); // Logger
+            //services.AddSingleton<ILoggerManager, Logger>(); // Logger
             services.AddControllers().AddNewtonsoftJson();
             
         }
