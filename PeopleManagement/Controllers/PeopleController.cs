@@ -43,7 +43,7 @@ namespace PeopleManagement.Controllers
 
                     return new PersonDataModel(p.ID, p.Name, surname, p.Gender, p.Email, p.PhoneNumber, p.DateOfBirth);
                 }).ToList();
-                return newPeopleList;
+                return Ok(newPeopleList);
             }
             else
             {
@@ -104,8 +104,8 @@ namespace PeopleManagement.Controllers
                     byte[] surnameEncoded = Encoding.Unicode.GetBytes(person.Surname);
                     Person personToSave = new Person( person.Name, surnameEncoded, person.Gender, person.Email, person.PhoneNumber, person.DateOfBirth);
                     var result =  await _peopleRepository.AddPerson(personToSave);
-
-                    return Ok("Request executed successfully. Total changes made: "+result);
+                    
+                    return Ok(result);
                 }catch(Exception ex)
                 {
                     _logger.LogError(ex , "Exception has been thrown while trying to insert a new person");
@@ -153,7 +153,7 @@ namespace PeopleManagement.Controllers
                     catch (Exception ex)
                     {
                         _logger.LogError(ex , "Exception has been thrown while trying to update a new person");
-                        return BadRequest();
+                        return BadRequest("Request failed");
                     }
                 }
             }

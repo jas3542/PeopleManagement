@@ -1,0 +1,64 @@
+2021-03-03 18:02:21.7143 Info Message Template Auto Format enabled
+2021-03-03 18:02:21.7578 Info Loading assembly: NLog.Web.AspNetCore
+2021-03-03 18:02:21.8341 Info Adding target FileTarget(Name=logs)
+2021-03-03 18:02:21.8341 Warn Skipping unrecognized property 'tolower=true` for ${level} (NLog.LayoutRenderers.LevelLayoutRenderer)
+2021-03-03 18:02:21.8341 Info Adding target ConsoleTarget(Name=lifetimeConsole)
+2021-03-03 18:02:21.8933 Info Validating config: TargetNames=logs, ConfigItems=32, FilePath=C:\Users\Jas\Documents\_visualStudio_projects\PeopleManagement\PeopleManagement\bin\Debug\netcoreapp3.1\nlog.config
+2021-03-03 18:02:21.9071 Warn Unused target detected. Add a rule for this target to the configuration. TargetName: lifetimeConsole
+2021-03-03 18:02:22.4710 Info Configuring from an XML element in C:\Users\Jas\Documents\_visualStudio_projects\PeopleManagement\PeopleManagement/nlog.config...
+2021-03-03 18:02:22.4759 Info Message Template Auto Format enabled
+2021-03-03 18:02:22.4759 Info Loading assembly: NLog.Web.AspNetCore
+2021-03-03 18:02:22.4759 Info Adding target FileTarget(Name=logs)
+2021-03-03 18:02:22.4912 Warn Skipping unrecognized property 'tolower=true` for ${level} (NLog.LayoutRenderers.LevelLayoutRenderer)
+2021-03-03 18:02:22.4912 Info Adding target ConsoleTarget(Name=lifetimeConsole)
+2021-03-03 18:02:22.4912 Info Closing old configuration.
+2021-03-03 18:02:22.5271 Info Validating config: TargetNames=logs, ConfigItems=32, FilePath=C:\Users\Jas\Documents\_visualStudio_projects\PeopleManagement\PeopleManagement/nlog.config
+2021-03-03 18:02:22.5271 Warn Unused target detected. Add a rule for this target to the configuration. TargetName: lifetimeConsole
+2021-03-03 18:20:27.3708 Info Message Template Auto Format enabled
+2021-03-03 18:20:27.3911 Info Loading assembly: NLog.Web.AspNetCore
+2021-03-03 18:20:27.4511 Info Adding target FileTarget(Name=logs)
+2021-03-03 18:20:27.4511 Warn Skipping unrecognized property 'tolower=true` for ${level} (NLog.LayoutRenderers.LevelLayoutRenderer)
+2021-03-03 18:20:27.4643 Info Adding target ConsoleTarget(Name=lifetimeConsole)
+2021-03-03 18:20:27.5002 Info Validating config: TargetNames=logs, ConfigItems=32, FilePath=C:\Users\Jas\Documents\_visualStudio_projects\PeopleManagement\PeopleManagement\bin\Debug\netcoreapp3.1\nlog.config
+2021-03-03 18:20:27.5128 Warn Unused target detected. Add a rule for this target to the configuration. TargetName: lifetimeConsole
+2021-03-03 18:20:27.9775 Info Configuring from an XML element in C:\Users\Jas\Documents\_visualStudio_projects\PeopleManagement\PeopleManagement/nlog.config...
+2021-03-03 18:20:27.9775 Info Message Template Auto Format enabled
+2021-03-03 18:20:27.9775 Info Loading assembly: NLog.Web.AspNetCore
+2021-03-03 18:20:27.9925 Info Adding target FileTarget(Name=logs)
+2021-03-03 18:20:27.9925 Warn Skipping unrecognized property 'tolower=true` for ${level} (NLog.LayoutRenderers.LevelLayoutRenderer)
+2021-03-03 18:20:27.9925 Info Adding target ConsoleTarget(Name=lifetimeConsole)
+2021-03-03 18:20:27.9925 Info Closing old configuration.
+2021-03-03 18:20:28.0289 Info Validating config: TargetNames=logs, ConfigItems=32, FilePath=C:\Users\Jas\Documents\_visualStudio_projects\PeopleManagement\PeopleManagement/nlog.config
+2021-03-03 18:20:28.0289 Warn Unused target detected. Add a rule for this target to the configuration. TargetName: lifetimeConsole
+2021-03-03 18:58:25.8175 Info Message Template Auto Format enabled
+2021-03-03 18:58:25.9487 Info Loading assembly: NLog.Web.AspNetCore
+2021-03-03 18:58:26.3347 Info Adding target FileTarget(Name=logs)
+2021-03-03 18:58:26.4376 Warn Skipping unrecognized property 'tolower=true` for ${level} (NLog.LayoutRenderers.LevelLayoutRenderer)
+2021-03-03 18:58:26.4663 Info Adding target ConsoleTarget(Name=lifetimeConsole)
+2021-03-03 18:58:26.7104 Info Validating config: TargetNames=logs, ConfigItems=32, FilePath=C:\Users\Jas\Documents\_visualStudio_projects\PeopleManagement\PeopleManagement\bin\Debug\netcoreapp3.1\nlog.config
+2021-03-03 18:58:26.8652 Warn Unused target detected. Add a rule for this target to the configuration. TargetName: lifetimeConsole
+2021-03-03 18:58:28.0262 Info Configuring from an XML element in C:\Users\Jas\Documents\_visualStudio_projects\PeopleManagement\PeopleManagement/nlog.config...
+2021-03-03 18:58:28.0262 Info Message Template Auto Format enabled
+2021-03-03 18:58:28.0459 Info Loading assembly: NLog.Web.AspNetCore
+2021-03-03 18:58:28.0560 Info Adding target FileTarget(Name=logs)
+2021-03-03 18:58:28.0560 Warn Skipping unrecognized property 'tolower=true` for ${level} (NLog.LayoutRenderers.LevelLayoutRenderer)
+2021-03-03 18:58:28.0748 Info Adding target ConsoleTarget(Name=lifetimeConsole)
+2021-03-03 18:58:28.0748 Info Closing old configuration.
+2021-03-03 18:58:28.1271 Info Validating config: TargetNames=logs, ConfigItems=32, FilePath=C:\Users\Jas\Documents\_visualStudio_projects\PeopleManagement\PeopleManagement/nlog.config
+2021-03-03 18:58:28.1361 Warn Unused target detected. Add a rule for this target to the configuration. TargetName: lifetimeConsole
+2021-03-03 19:28:49.1038 Info Message Template Auto Format enabled
+2021-03-03 19:28:49.1396 Info Loading assembly: NLog.Web.AspNetCore
+2021-03-03 19:28:49.2455 Info Adding target FileTarget(Name=logs)
+2021-03-03 19:28:49.2604 Warn Skipping unrecognized property 'tolower=true` for ${level} (NLog.LayoutRenderers.LevelLayoutRenderer)
+2021-03-03 19:28:49.2738 Info Adding target ConsoleTarget(Name=lifetimeConsole)
+2021-03-03 19:28:49.3479 Info Validating config: TargetNames=logs, ConfigItems=32, FilePath=C:\Users\Jas\Documents\_visualStudio_projects\PeopleManagement\PeopleManagement\bin\Debug\netcoreapp3.1\nlog.config
+2021-03-03 19:28:49.3727 Warn Unused target detected. Add a rule for this target to the configuration. TargetName: lifetimeConsole
+2021-03-03 19:28:50.0434 Info Configuring from an XML element in C:\Users\Jas\Documents\_visualStudio_projects\PeopleManagement\PeopleManagement/nlog.config...
+2021-03-03 19:28:50.1039 Info Message Template Auto Format enabled
+2021-03-03 19:28:50.1175 Info Loading assembly: NLog.Web.AspNetCore
+2021-03-03 19:28:50.1323 Info Adding target FileTarget(Name=logs)
+2021-03-03 19:28:50.1484 Warn Skipping unrecognized property 'tolower=true` for ${level} (NLog.LayoutRenderers.LevelLayoutRenderer)
+2021-03-03 19:28:50.1653 Info Adding target ConsoleTarget(Name=lifetimeConsole)
+2021-03-03 19:28:50.1823 Info Closing old configuration.
+2021-03-03 19:28:50.2391 Info Validating config: TargetNames=logs, ConfigItems=32, FilePath=C:\Users\Jas\Documents\_visualStudio_projects\PeopleManagement\PeopleManagement/nlog.config
+2021-03-03 19:28:50.2474 Warn Unused target detected. Add a rule for this target to the configuration. TargetName: lifetimeConsole
